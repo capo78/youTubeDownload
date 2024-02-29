@@ -1,0 +1,70 @@
+from pytube import YouTube
+from moviepy.editor import *
+
+print(f'''
+      
+
+    ⣠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⡀⠀⠀
+⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀
+⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀
+⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠈⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⢈⣹⣿⣿⣿⣿⣿⣿⣿⡇
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⢀⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇
+⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀
+⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀
+⠀⠀⠈⠉⠙⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠋⠉⠁
+      
+''')
+print(f'''
+    _                     _                 _ 
+  __| | _____      ___ __ | | ___   __ _  __| |
+ / _` |/ _ \ \ /\ / / '_ \| |/ _ \ / _` |/ _` |
+| (_| | (_) \ V  V /| | | | | (_) | (_| | (_| |
+ \__,_|\___/ \_/\_/ |_| |_|_|\___/ \__,_|\__,_| 
+''')
+
+
+
+print()
+print()
+print()
+print('------ Welcome to YouTube download by C4p0 ------')
+print()
+
+while True:
+    url = input(' inserire il link che desideri \n')
+
+    yt= YouTube(url)
+    #print(url.lengh)
+    print(yt.title)
+    print(yt.thumbnail_url)
+    print(yt.description)
+
+    print()
+
+
+
+    selection = (input('Seleziona : \n1 per il video \n2 per audio \n'))
+
+    #print(selection)
+    
+
+    if selection=='1':
+        down= yt.streams.get_by_itag(22)
+        down.download()
+        print()
+        print(f'{yt.title}\nDownload video Terminato \n')
+
+    elif selection=='2':
+        down_audio= yt.streams.filter(only_audio=True).first()
+        down_audio.download(filename=f'{yt.title}.mp3')
+        #print(down_audio)
+        print(f'{yt.title}\nDownload audio Terminato \n')
+
+
+    else:
+        print('Selezione errata riprova ;) ')    
+
+
